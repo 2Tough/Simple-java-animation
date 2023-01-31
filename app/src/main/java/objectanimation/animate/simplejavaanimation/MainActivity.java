@@ -24,6 +24,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageH;
+    boolean clicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +32,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageH = findViewById(R.id.image_heart);
-        int count = 0;
+
 
 
 
 
         findViewById(R.id.image_heart).setOnClickListener(new View.OnClickListener() {
+            int count = 0;
             @Override
             public void onClick(View v) {
 
-                if()
+                clicked = true;
+                if(clicked) {
+                    count++;
+                } else {
+                    count--;
+                }
 
                 TextView text = (TextView) findViewById(R.id.textScore);
-                text.setText();
+                text.setText(count);
 
                 imageH.startAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(),
