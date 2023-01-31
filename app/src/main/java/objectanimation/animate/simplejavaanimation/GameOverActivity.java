@@ -30,6 +30,6 @@ public class GameOverActivity extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         });
-        DisplayScore.setText("Score: "+score);
+        DisplayScore.setText("Score: "+ score);
     }
 }

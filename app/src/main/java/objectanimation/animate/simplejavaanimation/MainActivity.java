@@ -2,28 +2,27 @@ package objectanimation.animate.simplejavaanimation;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageH;
+    private TextView scoreText;
+    ConstraintLayout mBackgroundView;
+    private int score;
     boolean clicked = false;
 
     @Override
@@ -32,25 +31,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageH = findViewById(R.id.image_heart);
+        scoreText = (TextView) findViewById(R.id.textScore);
 
+        //
+        mBackgroundView = findViewById(R.id.backgroundImage);
 
+        findViewById(R.id.backgroundImage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                minusCounter();
+            }
+            private void minusCounter() {
+                score--;
+                scoreText.setText("Score: " + score);
+            }
+        });
 
+        //
 
 
         findViewById(R.id.image_heart).setOnClickListener(new View.OnClickListener() {
-            int count = 0;
+
             @Override
             public void onClick(View v) {
 
-                clicked = true;
-                if(clicked) {
-                    count++;
-                } else {
-                    count--;
-                }
-
-                TextView text = (TextView) findViewById(R.id.textScore);
-                text.setText(count);
+                plusCounter();
 
                 imageH.startAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(),
@@ -62,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
                 positionImage();
 
             }
+
+            private void plusCounter() {
+                score++;
+                scoreText.setText("Score: " + score);
+            }
+
+
 
             public void positionImage() {
 
