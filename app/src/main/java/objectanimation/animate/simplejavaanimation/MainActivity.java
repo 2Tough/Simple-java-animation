@@ -2,6 +2,7 @@ package objectanimation.animate.simplejavaanimation;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -44,7 +45,23 @@ public class MainActivity extends AppCompatActivity {
             private void minusCounter() {
                 score--;
                 scoreText.setText("Score: " + score);
+
+                //to display game over
+                scoreChecker();
+                //
             }
+
+            // function to display game over screen
+            private void scoreChecker() {
+                if (score == -4) {
+
+                    Intent gameOverIntent = new Intent(MainActivity.this, GameOverActivity.class);
+                    startActivity(gameOverIntent);
+
+                }
+            }
+            //
+
         });
 
         //
