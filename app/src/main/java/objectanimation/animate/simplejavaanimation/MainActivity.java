@@ -55,10 +55,17 @@ public class MainActivity extends AppCompatActivity {
             private void scoreChecker() {
                 if (score == -4) {
 
-                    Intent gameOverIntent = new Intent(MainActivity.this, GameOverActivity.class);
-                    startActivity(gameOverIntent);
+                    gameOverScreen();
 
                 }
+
+
+
+            }
+
+            private void gameOverScreen() {
+                Intent gameOverIntent = new Intent(MainActivity.this, GameOverActivity.class);
+                startActivity(gameOverIntent);
             }
             //
 
